@@ -4,3 +4,30 @@ APCS2 pd10
 Final Proj Plans...
 
 First order of business -- Create graph data structure!
+
+Node.java
+- ArrayList of pointers to other Nodes
+- int color (from global array of available colors)
+- getColor() and setColor(int)
+- getNode(int) -- returns Node at position int in the ArrayList
+- setNode(int, Node)
+
+Graph.java
+- array of available colors
+- addNode()
+- boolean solved
+- Node _root
+- solve(int) -- int being the number of colors
+
+Driver.pde
+--> Click to create Node
+--> Click two Nodes to create edge in between Nodes
+--> Dialogue box for user to indicate whether she is creating Nodes or creating
+edges, or if she's done drawing the graph
+
+Initially, we will test our graph coloring algo by creating a program in
+Processing that will allow the user to draw their own vertices and edges.
+
+If we get to it/are able to figure this part out, we'll then figure out how to 
+translate an image (white background, black borders) into a graph and then 
+render it as a colored map.
