@@ -18,4 +18,8 @@ class Node {
   Node getNeighbor(int i) {
     return _neighbors.get(i);
   }
+  
+  void addNeighbor(Node a) {
+    _neighbors.add(a);
+  }
 }
