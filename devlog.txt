@@ -10,6 +10,14 @@ Contributor:
 ================================================================================
 
 ================================================================================
+Date: 2016-06-01
+Contributor: SY
+* create directory Driver with Driver.pde, Graph.pde, and Node.pde
+* write inst vars and basic methods for Graph.pde and Node.pde
+* still getting some weird error messages though...
+================================================================================
+
+================================================================================
 Date: 2016-05-31
 Contributor: SY/ANK
 * create plan20160531
