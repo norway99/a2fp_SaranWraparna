@@ -4,7 +4,7 @@ class Node{
   ArrayList<Node> _neighbors;
   
   Node(int x, int y) {
-    ellipse(x, y, 5, 5);
+    ellipse(x, y, 15, 15);
     _x = x;
     _y = y;
     _color = 255;
