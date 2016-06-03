@@ -4,7 +4,7 @@ class Graph {
   int[] _colors;
   
   void addNode() {
-    Node a = new Node();
+    Node a = new Node(mouseX, mouseY);
     _nodes.add(a);
   }
   
@@ -15,4 +15,5 @@ class Graph {
   
   void solve(int numColors) { //don't know if this should be void
   }
+
 }
