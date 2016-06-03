@@ -10,20 +10,6 @@ Contributor:
 ================================================================================
 
 ================================================================================
-Date: 2016-06-03
-Contributor: ANK
-* begin debugging Driver.pde
-================================================================================
-
-================================================================================
-Date: 2016-06-02
-Contributor: ANK
-* add methods to flesh out GUI nodes and edges in Driver.pde
-* add NodeStack.pde, which contains a stack to facilitate user-driven edge-building
-* need to debug null pointer exceptions, indubitatbly other things as well
-================================================================================
-
-================================================================================
 Date: 2016-06-01
 Contributor: SY
 * create directory Driver with Driver.pde, Graph.pde, and Node.pde

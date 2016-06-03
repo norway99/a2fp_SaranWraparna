@@ -1,14 +1,15 @@
-class Node {
-  int _color;
+class Node{
+
+  int _color, _x, _y;
   ArrayList<Node> _neighbors;
   
-  Node() {
+  Node(int x, int y) {
+    ellipse(x, y, 15, 15);
+    _x = x;
+    _y = y;
     _color = 255;
+    fill(_color);
     _neighbors = new ArrayList<Node>();
-  }
-  
-  int getColor() {
-    return _color;
   }
   
   void setColor(int c) {
@@ -22,4 +23,5 @@ class Node {
   void addNeighbor(Node a) {
     _neighbors.add(a);
   }
+  
 }
