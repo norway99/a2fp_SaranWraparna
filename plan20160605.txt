@@ -1,0 +1,35 @@
+
+Saran Wrap(arna) -- Sarah Yoon, Aparna Nair-Kanneganti
+APCS2 pd10
+2016-06-05
+Final Proj Plans...
+
+First order of business -- Create graph data structure!
+
+Node.java
+- ArrayList of pointers to other Nodes
+- int color (from global array of available colors)
+- calls ellipse(<params>) in constructor to render graphically
+- setColor(int)
+- setNode(int, Node)
+
+Graph.java
+- array of available colors
+- addNode()
+- boolean solved
+- Node _root
+- traverse() (not yet implemented but will most likely make use of _root)
+- solve(int) -- int being the number of colors
+
+Driver.pde
+--> Click to create Node
+--> Click two Nodes to create edge in between Nodes
+--> Buttons onscreen for user to indicate whether she is creating Nodes or creating
+edges, or if she's done drawing the graph
+--> Several methods need to be debugged - primarily the rendering of nodes
+
+As stated above, our driver file needs to be debugged so that the nodes "stay" onscreen during the draw() loop. Currently nodes are flashing out of existence when the mouse is released after the click. This is a small improvement over the null pointer exception being thrown previously, but obviously still needs to be debugged.
+
+In addition, we need to write the solve(int) algorithm. This will take place once we complete the front end and user interface, which we predict should be done by the middle of the week.
+
+We will most likely use a backtracing algorithm with checks to see if the user-specified input for number of colors is "bad" (ie. graph is impossible to color due to configuration or number of nodes).
