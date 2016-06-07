@@ -4,9 +4,12 @@ Final Project -- Development Log
 
 ~TEMPLATE~
 ================================================================================
-Date:
-Contributor:
-<Progress>
+Date: 2016-06-05
+Contributor: ANK
+* continue debugging Driver.pde
+* resolve problem with rendering nodes upon mouseclick [move background(0) out of draw() to setup()]
+* finish up with button for different modes (node and edge creation) and button to change value of graphComplete
+* still need to check whether there are any issues with drawing edges between nodse
 ================================================================================
 
 ================================================================================
@@ -20,7 +23,7 @@ Date: 2016-06-02
 Contributor: ANK
 * add methods to flesh out GUI nodes and edges in Driver.pde
 * add NodeStack.pde, which contains a stack to facilitate user-driven edge-building
-* need to debug null pointer exceptions, indubitatbly other things as well
+* need to debug null pointer exceptions, indubitably other things as well
 ================================================================================
 
 ================================================================================
