@@ -22,6 +22,7 @@ just one of the possible solutions.
 ...If there is time, it might be worthwhile to also include an implementation of
 a greedy algorithm.
 
+https://www.math.upenn.edu/~wilf/website/Backtracking%20II.pdf
 
 
        
