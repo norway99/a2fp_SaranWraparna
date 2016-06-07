@@ -19,12 +19,13 @@ void setup(){
   graphComplete = false;
   addNode = false;
   clickable = true;
+  ns = new NodeStack();
   me = new Graph();
 }
 
 void draw(){
   rect(bX, bY, bwidth, bheight);
-  text("edge mode", bX + 1, bY + 1);
+  text("switch mode", bX + 1, bY + 1);
   fill(127);
   rect(b1X, b1Y, bwidth, bheight);
   text("done", b1X + 1, b1Y + 1);
@@ -36,48 +37,61 @@ void draw(){
   }
   if (mode == EMODE)
     text("mode is emode", 100, 100); // text for debug purposes
+  //if (mode == NMODE)
+    //text("mode is nmode", 200, 100); // text for debug purposes
   if (graphComplete){
     //me.solve();
-    text("graphy graph", 100, 100); // text for debug purposes
+    text("graphy graph", 300, 100); // text for debug purposes
     clickable = false;
   }
 }
 
 Node findNode(){
   for (Node n : me._nodes){
-    //int nX = n._x - mouseX;
-    //int nY = n._y - mouseY;
-    if (dist(mouseX,mouseY,n._x,n._y) < 5)
+    if (dist(mouseX,mouseY, n._x, n._y) < 10){
+      print("found node");
       return n;
+    }
   }
   return null;
 }
 
+boolean graphComplete(){
+  return mouseX >= b1X && mouseX <= b1X + bwidth &&
+         mouseY >= b1Y && mouseY <= b1Y + bheight;
+}
+
+boolean switchMode(){
+  return mouseX >= bX && mouseX <= bX + bwidth &&
+         mouseY >= bY && mouseY <= bY + bheight;
+}  
+
 void mousePressed(){
   if (clickable){
-    if (mouseX >= b1X && mouseX <= b1X + bwidth &&
-        mouseY >= b1Y && mouseY <= b1Y + bheight)
+    if (graphComplete())
       graphComplete = true;
-    else if (mouseX >= bX && mouseX <= bX + bwidth &&
-             mouseY >= bY && mouseY <= bY + bheight)
-      mode = EMODE;
+    else if (switchMode()){
+      if (mode == NMODE)
+        mode = EMODE;
+      else
+        mode = NMODE;
+    }
     else if (mode == NMODE)
       addNode = true;
     else if (mode == EMODE && numClicks < 2){
       ns.push(findNode());
       ++numClicks;
     }
-    else
-      ;
-  }
+  }    
 }
 
 void createEdge(){
   if (numClicks == 2){
     Node one = ns.pop();
     Node two = ns.pop();
+    stroke(255);
     line(one._x, one._y, two._x, two._y);
-    //me.addEdge(one, two);
+    me.addEdge(one, two);
     numClicks = 0;
   }
 }
