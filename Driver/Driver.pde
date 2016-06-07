@@ -9,6 +9,7 @@ Graph me;
 
 void setup(){ 
   size(600, 600);
+  background(0);
   bX = bY = 10;
   b1X = b1Y = 50;
   bwidth = 30;
@@ -22,7 +23,6 @@ void setup(){
 }
 
 void draw(){
-  background(0);
   rect(bX, bY, bwidth, bheight);
   text("edge mode", bX + 1, bY + 1);
   fill(127);
@@ -31,9 +31,7 @@ void draw(){
   fill(127);
   createEdge();
   if (addNode){
-      int nodex = mouseX;
-      int nodey = mouseY;
-      me.addNode(nodex, nodey);
+      me.addNode(mouseX, mouseY);
       addNode = false;
   }
   if (mode == EMODE)
@@ -55,15 +53,15 @@ Node findNode(){
   return null;
 }
 
-void mouseClicked(){
+void mousePressed(){
   if (clickable){
     if (mouseX >= b1X && mouseX <= b1X + bwidth &&
         mouseY >= b1Y && mouseY <= b1Y + bheight)
         graphComplete = true;
     else if (mouseX >= bX && mouseX <= bX + bwidth &&
-        mouseY >= bY && mouseY <= bY + bheight)
-        mode = EMODE;
-    else if (mode == NMODE)
+             mouseY >= bY && mouseY <= bY + bheight)
+      mode = EMODE;
+    if (mode == NMODE)
       addNode = true;
     else if (mode == EMODE && numClicks < 2){
       ns.push(findNode());
