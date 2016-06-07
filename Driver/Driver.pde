@@ -61,7 +61,7 @@ void mousePressed(){
     else if (mouseX >= bX && mouseX <= bX + bwidth &&
              mouseY >= bY && mouseY <= bY + bheight)
       mode = EMODE;
-    if (mode == NMODE)
+    else if (mode == NMODE)
       addNode = true;
     else if (mode == EMODE && numClicks < 2){
       ns.push(findNode());
