@@ -10,6 +10,14 @@ Contributor:
 ================================================================================
 
 ================================================================================
+Date: 2016-06-07
+Contributor: SY/ANK
+* debug Driver.pde!! adding edge mechanism now works :)
+* change emode button to switchmode
+* GOAL: undo/redo...? (PERFECT because we have a stack!!)
+================================================================================
+
+================================================================================
 Date: 2016-06-06
 Contributor: SY
 * when mode is EMODE and a node is clicked, ns.push(findNode()) gives a
