@@ -45,9 +45,9 @@ void draw(){
 
 Node findNode(){
   for (Node n : me._nodes){
-    int nX = n._x - mouseX;
-    int nY = n._y - mouseY;
-    if (sqrt(sq(nX) + sq(nY)) < 5)
+    //int nX = n._x - mouseX;
+    //int nY = n._y - mouseY;
+    if (dist(mouseX,mouseY,n._x,n._y) < 5)
       return n;
   }
   return null;

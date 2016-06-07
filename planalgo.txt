@@ -1,0 +1,27 @@
+Backtracking Graph Coloring:
+
+Helper method isSafe(Node a, int color) iterates through a's neighbors and
+returns boolean for whether a can be assigned the given color.
+
+Recursive method mcolor(Node currentVertex) to solve m-coloring problem returns
+boolean:
+Base Case: All vertices are colored --> return true.
+For colors i --> m:
+    if isSafe(currentVertex, i)
+       Set currentVertex's color to currentColor.
+       if mcolor(<the next vertex, from currentVertex's neighbors>)
+       	  return true.
+       reset currentVertex's color to blank.
+return false.
+
+solve() simply calls mcolor starting with Node 0, returning a Graph with all its
+properly colored Nodes if mcolor ultimately returns true, and presents some kind
+of error message if the graph isn't solvable. Note: the solution returned is
+just one of the possible solutions.
+
+...If there is time, it might be worthwhile to also include an implementation of
+a greedy algorithm.
+
+
+
+       

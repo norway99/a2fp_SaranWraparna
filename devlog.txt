@@ -4,6 +4,20 @@ Final Project -- Development Log
 
 ~TEMPLATE~
 ================================================================================
+Date:
+Contributor:
+<progress>
+================================================================================
+
+================================================================================
+Date: 2016-06-06
+Contributor: SY
+* when mode is EMODE and a node is clicked, ns.push(findNode()) gives a
+  NullPointerException
+* wrote out plan for backtracking algorithm for solve() in planalgo.txt
+================================================================================
+
+================================================================================
 Date: 2016-06-05
 Contributor: ANK
 * continue debugging Driver.pde
