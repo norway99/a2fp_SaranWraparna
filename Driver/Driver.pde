@@ -57,7 +57,7 @@ void mousePressed(){
   if (clickable){
     if (mouseX >= b1X && mouseX <= b1X + bwidth &&
         mouseY >= b1Y && mouseY <= b1Y + bheight)
-        graphComplete = true;
+      graphComplete = true;
     else if (mouseX >= bX && mouseX <= bX + bwidth &&
              mouseY >= bY && mouseY <= bY + bheight)
       mode = EMODE;
