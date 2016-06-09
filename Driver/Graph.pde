@@ -1,11 +1,9 @@
 class Graph {
   ArrayList<Node> _nodes;
-  boolean _solved;
   int[][][] _colors;
   
   Graph(){
     _nodes = new ArrayList<Node>();
-    _solved = false;
     _colors = new int [255][255][255];
   }
   
@@ -17,6 +15,15 @@ class Graph {
   void addEdge(Node a, Node b){
     a.addNeighbor(b);
     b.addNeighbor(a);
+  }
+  
+  boolean isSolved() {
+    for (Node i : _nodes) {
+      if (i._color == 255) {
+        return false;
+      }
+    }
+    return true;
   }
   
   //void solve(int numColors) { //don't know if this should be void
