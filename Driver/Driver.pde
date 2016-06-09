@@ -95,6 +95,23 @@ void createEdge(){
     numClicks = 0;
   }
 }
+
+boolean isSafe(Node a, int c) {
+  for(Node i: a._neighbors) {
+    if (i._color == c) {
+      return false;
+    }
+  return true;
+}
+
+boolean mcolor(Node curr) {
+  
+}
+
+void solve() {
+}
+
+
     
 
   
