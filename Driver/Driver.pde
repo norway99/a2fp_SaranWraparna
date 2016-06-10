@@ -48,8 +48,8 @@ void draw(){
 
 Node findNode(){
   for (Node n : me._nodes){
-    if (dist(mouseX,mouseY, n._x, n._y) < 10){
-      print("found node");
+    if (dist(mouseX, mouseY, n._x, n._y) < 10){
+      //print("found node");
       return n;
     }
   }
@@ -96,19 +96,34 @@ void createEdge(){
   }
 }
 
-boolean isSafe(Node a, int c) {
+boolean isSafe(Node a, int[] c) {
   for(Node i: a._neighbors) {
-    if (i._color == c) {
+    if (i.sameColor(c)) {
       return false;
     }
+  }
   return true;
 }
 
 boolean mcolor(Node curr) {
-  
+    if (me.isSolved()) {
+      return true;
+    }
+    for (int[] c: me._colors) {
+      if (isSafe(curr,c)) {
+        curr.setColor(c);
+        for(Node next: curr._neighbors) {
+          if (mcolor(next)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
 }
 
 void solve() {
+  
 }
 
 
