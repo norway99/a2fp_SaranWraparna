@@ -40,4 +40,9 @@ class Node{
     }
     return false;
   }
+  
+  String strNode() {
+    return " ( " + _x + " , " + _y + " ) ";
+  }
+  
 }

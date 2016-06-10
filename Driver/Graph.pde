@@ -36,6 +36,8 @@ class Graph {
     }
     return true;
   }
+   
+
   
   //void solve(int numColors) { //don't know if this should be void
   //}
