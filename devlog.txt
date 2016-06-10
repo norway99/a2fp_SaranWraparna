@@ -10,6 +10,18 @@ Contributor:
 ================================================================================
 
 ================================================================================
+Date: 2016-06-09
+Contributor: SY
+* change _colors array to literal 2D array of ordered triplets (10 colors)
+* change Node's _color attr to a 3-element array, change constructor and mutator
+accordingly
+* add sameColor(int[]) to Node.pde for easy comparison in isSafe(Node, int[])
+* add methods isSafe(Node, int[]), mcolor(Node), and wrapper solve() to Driver
+* Driver.pde still needs debugging; me._nodes.get(i) yields an
+IndexOutOfBounds exception... ?
+================================================================================
+
+================================================================================
 Date: 2016-06-07
 Contributor: SY/ANK
 * debug Driver.pde!! adding edge mechanism now works :)
