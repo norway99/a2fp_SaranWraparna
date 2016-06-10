@@ -44,9 +44,9 @@ void draw(){
     text("graphy graph", 300, 100); // text for debug purposes
     clickable = false;
   }
-  if (solve()) {
-    text("solved!", 300, 200);
-  }
+  //if (solve()) {
+    //text("solved!", 300, 200);
+  //}
 }
 
 Node findNode(){
@@ -71,11 +71,9 @@ boolean switchMode(){
 
 void mousePressed(){
   if (clickable){
-    if (graphComplete()){
-      graphComplete = true;
+    if (graphComplete())
       solve();
-    }
-    else if (switchMode()){
+    if (switchMode()){
       if (mode == NMODE)
         mode = EMODE;
       else
@@ -128,19 +126,8 @@ boolean mcolor(Node curr) {
 }
 
 boolean solve() {
+  print("hi");
+  //print(me._nodes.get(0).strNode());
   mcolor(me._nodes.get(0));
   return true;
 }
-
-
-    
-
-  
-    
-  
-
-  
-  
-  
-  
-  
