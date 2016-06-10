@@ -1,6 +1,6 @@
 class Node{
   boolean _colored;
-  int[] _color;
+  int[] _color; 
   int _x, _y;
   ArrayList<Node> _neighbors;
   

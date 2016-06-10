@@ -131,16 +131,3 @@ boolean solve() {
   mcolor(me._nodes.get(0));
   return true;
 }
-
-
-    
-
-  
-    
-  
-
-  
-  
-  
-  
-  
