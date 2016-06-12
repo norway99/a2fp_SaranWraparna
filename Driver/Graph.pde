@@ -28,7 +28,7 @@ class Graph {
     b.addNeighbor(a);
   }
     
-  boolean mcolor(int m, int vnum) {
+  boolean mcolor(int m, int vnum){
     if (vnum == _nodes.size()) 
       return true;
     Node curr = _nodes.get(vnum);
@@ -41,7 +41,7 @@ class Graph {
     return false;
   }
   
-  boolean isSafe(Node a, int[] c) {
+  boolean isSafe(Node a, int[] c){
     for(Node i: a._neighbors)
       if (i.sameColor(c))
         return false;
