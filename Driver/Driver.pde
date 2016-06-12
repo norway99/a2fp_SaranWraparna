@@ -33,7 +33,7 @@ void draw(){
   rect(bX, bY, bwidth, bheight);
   text("Switch Mode", bX + 1, bY + 1);
   rect(b1X, b1Y, bwidth, bheight);
-  text("Backtracing Solution", b1X + 1, b1Y + 1);
+  text("Backtracking Solution", b1X + 1, b1Y + 1);
   rect(b2X, b1Y, bwidth, bheight);
   text("Welsh-Powell Solution", b2X + 1, b1Y + 1);
   if (me._nodes.size() > 0)
