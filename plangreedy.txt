@@ -1,0 +1,12 @@
+Plan for Greedy Coloring Algorithm
+
+1. Color 0th node the 0th color.
+2. For remaining vertices:
+   i. create temp boolean[] called available, each index corresponding to
+      a color. available.size = number of neighbors???
+   ii. ierate through current vertex's immediate neighbors, altering boolean
+       values in available as necessary
+   iii. iterate through available, assign current vertex color corresponding to
+   	first 'true' in available.
+
+
