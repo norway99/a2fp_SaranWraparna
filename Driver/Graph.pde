@@ -20,6 +20,7 @@ class Graph {
   
   void addNode(int x, int y){
     Node a = new Node(x, y);
+    //a.draw();
     _nodes.add(a);
   }
   
@@ -29,11 +30,9 @@ class Graph {
   }
   
   boolean isSolved() {
-    for (Node i : _nodes) {
-      if (!(i._colored)) {
+    for (Node i : _nodes) 
+      if (!(i._colored)) 
         return false;
-      }
-    }
     return true;
   }
   
@@ -41,19 +40,18 @@ class Graph {
     if (isSolved()) {
       return true;
     }
-    for (int[] c: _colors) {
+    for (int[] c: _colors)
       if (isSafe(curr,c)) {
         curr.setColor(c);
         for(Node next: curr._neighbors)
           if (mcolor(next)) 
             return true;
       }
-    }
     return false;
   }
   
   boolean solve() {
-    print("hi");
+    //print("hi");
     //print(me._nodes.get(0).strNode());
     mcolor(me._nodes.get(0));
     return true;
@@ -63,7 +61,7 @@ class Graph {
     for(Node i: a._neighbors)
       if (i.sameColor(c))
         return false;
-   return true;
-  }
+    return true;
+   } 
 
 }

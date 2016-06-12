@@ -6,13 +6,12 @@ class Node{
   
   Node(int x, int y) {
     _colored = false;
-    ellipse(x, y, 15, 15);
+    //ellipse(x, y, 15, 15);
     _x = x;
     _y = y;
-    _color = new int[3];
-    for(int i=0; i<3; i++) {
-      _color[i] = 255;
-    }
+    _color = new int [3];
+    for(int i=0; i<3; i++)
+      _color[i] = 100;
     fill(_color[0], _color[1], _color[2]);
     _neighbors = new ArrayList<Node>();
   }
@@ -21,29 +20,32 @@ class Node{
     for (int i=0; i<3; i++) {
       _color[i] = c[i];
     }
-    fill(_color[0], _color[1], _color[2]);
+    //fill(_color[0], _color[1], _color[2]);
     _colored = true;
   }
   
-  Node getNeighbor(int i) {
-    return _neighbors.get(i);
+  void draw() { 
+    fill(_color[0], _color[1], _color[2]);
+    ellipse(_x, _y, 15, 15);
   }
+  
+  //Node getNeighbor(int i) {
+    //return _neighbors.get(i);
+  //}
   
   void addNeighbor(Node a) {
     _neighbors.add(a);
   }
   
   boolean sameColor(int[] c) {
-    for (int i=0; i<3; i++) {
-      if (c[i] != _color[i]) {
-        return true;
-      }
-    }
-    return false;
+    for (int i=0; i<3; i++)
+      if (_color[i] != c[i])
+        return false;
+    return true;
   }
   
   String strNode() {
     return " ( " + _x + " , " + _y + " ) ";
-  }
+  } // for debug purposes
   
 }
