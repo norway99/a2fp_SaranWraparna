@@ -59,9 +59,9 @@ class Graph {
      for (int i=0; i<ctr; i++) {
        sorted[i] = bydegree.poll();
      }
-     for (Node a: sorted) {
-       print(a._neighbors.size());
-     }
+     // works up to here!
+  
+     //I think there's a runaway loop here...
      while (ctr > 0) {
        for (Node i : sorted) {
          if (i._colored) {
