@@ -9,7 +9,6 @@ class Graph {
     {0,255,255}, //cyan
     {0,0,255},   //blue
     {127,0,255}, //violet
-    {255,0,127}, //magenta
     {102,51,0},  //brown
     {0,102,102}, //teal
   };
@@ -20,7 +19,6 @@ class Graph {
   
   void addNode(int x, int y){
     Node a = new Node(x, y);
-    //a.draw();
     _nodes.add(a);
   }
   
@@ -28,33 +26,18 @@ class Graph {
     a.addNeighbor(b);
     b.addNeighbor(a);
   }
-  
-  boolean isSolved() {
-    for (Node i : _nodes) 
-      if (!(i._colored)) 
-        return false;
-    return true;
-  }
-  
-  boolean mcolor(Node curr) {
-    if (isSolved()) {
+    
+  boolean mcolor(int m, int vnum) {
+    if (vnum == _nodes.size()) 
       return true;
-    }
-    for (int[] c: _colors)
-      if (isSafe(curr,c)) {
-        curr.setColor(c);
-        for(Node next: curr._neighbors)
-          if (mcolor(next)) 
-            return true;
+    Node curr = _nodes.get(vnum);
+    for (int c = 0; c < m; ++c)
+      if (isSafe(curr, _colors[c])) {
+        curr.setColor(_colors[c]);
+        if (mcolor(m, vnum + 1))
+          return true;
       }
     return false;
-  }
-  
-  boolean solve() {
-    //print("hi");
-    //print(me._nodes.get(0).strNode());
-    mcolor(me._nodes.get(0));
-    return true;
   }
   
   boolean isSafe(Node a, int[] c) {

@@ -4,6 +4,7 @@ int bX, bY, bwidth, bheight;
 int b1X, b1Y;
 int mode, numClicks;
 boolean addNode, graphComplete, clickable;
+int numCols = 3;
 NodeStack ns;
 Graph me;
 
@@ -42,25 +43,19 @@ void draw(){
   if (mode == NMODE)
     text("Drawing nodes", 200, 100); // text for debug purposes
   if (graphComplete){
-    //me.solve();
-    //int [] c = {255, 0, 0};
-    //me._nodes.get(0).setColor(c);
-    //print(me._nodes.get(0)._color[0]);
-    text("graphy graph", 300, 100); // text for debug purposes
+    text("Please enter the desired number of colors", 300, 100);
+    solve();
+    graphComplete = false;
     clickable = false;
   }
-  //if (solve()) {
-    //text("solved!", 300, 200);
-  //}
+  //if (solve())
+    //text("Solved!", 500, 500);
 }
 
 Node findNode(){
-  for (Node n : me._nodes){
-    if (dist(mouseX, mouseY, n._x, n._y) < 10){
-      //print("found node");
+  for (Node n : me._nodes)
+    if (dist(mouseX, mouseY, n._x, n._y) < 10)
       return n;
-    }
-  }
   return null;
 }
 
@@ -93,6 +88,19 @@ void mousePressed(){
   }    
 }
 
+/*void keyPressed(){
+  String num = "number: ";
+  if (graphComplete && keyAnalyzer(key))
+    num += key;
+  print (num);
+  numCols = Integer.parseInt(num);                        
+}
+
+boolean keyAnalyzer(char c){
+  return c == '2';
+}*/
+    
+
 void createEdge(){
   if (numClicks == 2){
     Node one = ns.pop();
@@ -103,3 +111,10 @@ void createEdge(){
     numClicks = 0;
   }
 }
+
+boolean solve() {
+    if (numCols > me._nodes.size())
+      text("Try again", 400, 100);
+    return me.mcolor(numCols, 0);
+}
+  
