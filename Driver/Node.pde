@@ -48,4 +48,13 @@ class Node{
     return " ( " + _x + " , " + _y + " ) ";
   } // for debug purposes
   
+  int compareTo(Node other) {
+    if (other._neighbors.size() == _neighbors.size())
+      return 0;
+    else if (other._neighbors.size() < _neighbors.size()) 
+      return -1;
+    else
+      return 1;
+  }
+  
 }
