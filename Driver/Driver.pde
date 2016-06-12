@@ -2,8 +2,10 @@ final int NMODE = 0;
 final int EMODE = 1;
 int bX, bY, bwidth, bheight;
 int b1X, b1Y;
+int b2X;
 int mode, numClicks;
-boolean addNode, graphComplete, clickable;
+boolean addNode, clickable;
+boolean bt, gc;
 int numCols = 3;
 NodeStack ns;
 Graph me;
@@ -13,11 +15,13 @@ void setup(){
   background(0);
   bX = bY = 10;
   b1X = b1Y = 50;
+  b2X = 250;
   bwidth = 30;
   bheight = 15;  
   mode = NMODE;
   numClicks = 0;
-  graphComplete = false;
+  gc = false;
+  bt = false;
   addNode = false;
   clickable = true;
   ns = new NodeStack();
@@ -29,8 +33,9 @@ void draw(){
   rect(bX, bY, bwidth, bheight);
   text("Switch Mode", bX + 1, bY + 1);
   rect(b1X, b1Y, bwidth, bheight);
-  text("Graph Complete", b1X + 1, b1Y + 1);
-  createEdge();
+  text("Backtracing Solution", b1X + 1, b1Y + 1);
+  rect(b2X, b1Y, bwidth, bheight);
+  text("Welsh-Powell Solution", b2X + 1, b1Y + 1);
   if (me._nodes.size() > 0)
     for (Node i : me._nodes)
       i.draw();
@@ -38,30 +43,31 @@ void draw(){
       me.addNode(mouseX, mouseY);
       addNode = false;
   }
-  if (mode == EMODE)
-    text("Drawing edges", 100, 100); // text for debug purposes
-  if (mode == NMODE)
-    text("Drawing nodes", 200, 100); // text for debug purposes
-  if (graphComplete){
+  if (mode == EMODE){
+    fill(127);
+    text("Drawing edges", 100, 100); 
+    fill(0);
+    text("Drawing nodes", 200, 100);
+    fill(127);
+  }
+  if (mode == NMODE){
+    text("Drawing nodes", 200, 100);
+    fill(0);
+    text("Drawing edges", 100, 100);
+    fill(127);
+  }    
+  createEdge();
+  if (gc){
     text("Please enter the desired number of colors", 300, 100);
-    solve();
-    graphComplete = false;
+    if (bt)
+      backSolve();
+    else
+      welshPowellSolve();
+    gc = false;
     clickable = false;
   }
   //if (solve())
     //text("Solved!", 500, 500);
-}
-
-Node findNode(){
-  for (Node n : me._nodes)
-    if (dist(mouseX, mouseY, n._x, n._y) < 10)
-      return n;
-  return null;
-}
-
-boolean graphComplete(){
-  return mouseX >= b1X && mouseX <= b1X + bwidth &&
-         mouseY >= b1Y && mouseY <= b1Y + bheight;
 }
 
 boolean switchMode(){
@@ -69,10 +75,24 @@ boolean switchMode(){
          mouseY >= bY && mouseY <= bY + bheight;
 }  
 
+boolean backTrace(){
+  return mouseX >= b1X && mouseX <= b1X + bwidth &&
+         mouseY >= b1Y && mouseY <= b1Y + bheight;
+}
+
+boolean welshPowell(){
+  return mouseX >= b2X && mouseX <= b2X + bwidth &&
+         mouseY >= b1Y && mouseY <= b1Y + bheight;
+}
+
 void mousePressed(){
   if (clickable){
-    if (graphComplete())
-      graphComplete = true;
+    if (backTrace()){
+      bt = true;
+      gc = true;
+    }
+    if (welshPowell())
+      gc = true;
     if (switchMode()){
       if (mode == NMODE)
         mode = EMODE;
@@ -101,6 +121,13 @@ boolean keyAnalyzer(char c){
 }*/
     
 
+Node findNode(){
+  for (Node n : me._nodes)
+    if (dist(mouseX, mouseY, n._x, n._y) < 10)
+      return n;
+  return null;
+}
+
 void createEdge(){
   if (numClicks == 2){
     Node one = ns.pop();
@@ -112,9 +139,15 @@ void createEdge(){
   }
 }
 
-boolean solve() {
+void backSolve(){
     if (numCols > me._nodes.size())
       text("Try again", 400, 100);
-    return me.mcolor(numCols, 0);
+    else
+      me.mcolor(numCols, 0);
 }
+
+void welshPowellSolve(){
+  print("welsh powell"); // placeholder until wp algo is complete
+}
+
   
