@@ -5,7 +5,7 @@ int b1X, b1Y;
 int b2X;
 int mode, numClicks;
 boolean addNode, clickable;
-boolean bt, gc;
+boolean bt, gc, gr;
 int numCols = 3;
 NodeStack ns;
 Graph me;
@@ -44,25 +44,27 @@ void draw(){
       addNode = false;
   }
   if (mode == EMODE){
-    fill(127);
-    text("Drawing edges", 100, 100); 
     fill(0);
     text("Drawing nodes", 200, 100);
     fill(127);
+    text("Drawing edges", 100, 100); 
   }
   if (mode == NMODE){
-    text("Drawing nodes", 200, 100);
     fill(0);
     text("Drawing edges", 100, 100);
     fill(127);
+    text("Drawing nodes", 200, 100);
   }    
   createEdge();
-  if (gc){
+  if (gr && gc){
+    fill(0);
+    text("Drawing edges", 100, 100);
+    fill(127);
     text("Please enter the desired number of colors", 300, 100);
-    if (bt)
-      backSolve();
-    else
-      welshPowellSolve();
+    //if (bt)
+      //backSolve();
+    //else
+      //welshPowellSolve();
     gc = false;
     clickable = false;
   }
@@ -108,18 +110,18 @@ void mousePressed(){
   }    
 }
 
-/*void keyPressed(){
-  String num = "number: ";
-  if (graphComplete && keyAnalyzer(key))
-    num += key;
-  print (num);
-  numCols = Integer.parseInt(num);                        
+void keyPressed(){
+  //String num = "number: ";
+  if (gc && keyAnalyzer(key))
+    //num += key;
+  print ("hi");
+  //numCols = Integer.parseInt(num);                        
 }
 
 boolean keyAnalyzer(char c){
-  return c == '2';
-}*/
-    
+  return c == '3';
+}
+   
 
 Node findNode(){
   for (Node n : me._nodes)
@@ -134,8 +136,10 @@ void createEdge(){
     Node two = ns.pop();
     stroke(255);
     line(one._x, one._y, two._x, two._y);
+    stroke(0);
     me.addEdge(one, two);
     numClicks = 0;
+    gr = true;
   }
 }
 
