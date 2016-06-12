@@ -24,23 +24,28 @@ void setup(){
 }
 
 void draw(){
+  fill(127);
   rect(bX, bY, bwidth, bheight);
-  text("switch mode", bX + 1, bY + 1);
-  fill(127);
+  text("Switch Mode", bX + 1, bY + 1);
   rect(b1X, b1Y, bwidth, bheight);
-  text("done", b1X + 1, b1Y + 1);
-  fill(127);
+  text("Graph Complete", b1X + 1, b1Y + 1);
   createEdge();
+  if (me._nodes.size() > 0)
+    for (Node i : me._nodes)
+      i.draw();
   if (addNode){
       me.addNode(mouseX, mouseY);
       addNode = false;
   }
   if (mode == EMODE)
-    text("mode is emode", 100, 100); // text for debug purposes
-  //if (mode == NMODE)
-    //text("mode is nmode", 200, 100); // text for debug purposes
+    text("Drawing edges", 100, 100); // text for debug purposes
+  if (mode == NMODE)
+    text("Drawing nodes", 200, 100); // text for debug purposes
   if (graphComplete){
     //me.solve();
+    //int [] c = {255, 0, 0};
+    //me._nodes.get(0).setColor(c);
+    //print(me._nodes.get(0)._color[0]);
     text("graphy graph", 300, 100); // text for debug purposes
     clickable = false;
   }
@@ -72,7 +77,7 @@ boolean switchMode(){
 void mousePressed(){
   if (clickable){
     if (graphComplete())
-      solve();
+      graphComplete = true;
     if (switchMode()){
       if (mode == NMODE)
         mode = EMODE;
@@ -97,37 +102,4 @@ void createEdge(){
     me.addEdge(one, two);
     numClicks = 0;
   }
-}
-
-boolean isSafe(Node a, int[] c) {
-  for(Node i: a._neighbors) {
-    if (i.sameColor(c)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-boolean mcolor(Node curr) {
-    if (me.isSolved()) {
-      return true;
-    }
-    for (int[] c: me._colors) {
-      if (isSafe(curr,c)) {
-        curr.setColor(c);
-        for(Node next: curr._neighbors) {
-          if (mcolor(next)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-}
-
-boolean solve() {
-  print("hi");
-  //print(me._nodes.get(0).strNode());
-  mcolor(me._nodes.get(0));
-  return true;
 }
