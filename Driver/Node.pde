@@ -1,4 +1,4 @@
-class Node{
+class Node implements Comparable<Node>{
   boolean _colored;
   int[] _color;
   final int [] defaultcol = {127, 127, 127};

@@ -147,7 +147,7 @@ void backSolve(){
 }
 
 void welshPowellSolve(){
-  print("welsh powell"); // placeholder until wp algo is complete
+  me.welshpowell(); // placeholder until wp algo is complete
 }
 
   
