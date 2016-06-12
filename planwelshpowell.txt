@@ -1,0 +1,25 @@
+Plan for Welsh-Powell Algorithm for Graph Coloring:
+
+1. Find degree of each vertex (size of _neighbors in Node.pde)
+2. Create ArrayList of nodes in Graph s.t. they are in descending order by
+   degree
+
+First Pass: currentColor = 0th in array of colors
+Start at beginning of ArrayList, color this node with currentColor, remove it.
+Iterate through ArrayList. If a given node has a neighbor that's assigned
+currentColor, skip it. Otherwise, color it currentColor and remove it.
+
+Second Pass: currentColor = 1st in array of colors
+Start at beginning of ArrayList (any nodes that have already been colored have
+been removed). Color this node with currentColor, remove it.
+... The same process, only now currentColor has been changed.
+
+Third Pass: currentColor = 2nd in array of colors
+
+.
+.
+.
+And so on and so forth, until ArrayList is empty (i.e. all nodes are colored).
+The nice thing about this algorithm is that by starting with the vertices with
+the highest degrees, we can take care of the vertices with the highest number
+of conflicts as early as possible :)
