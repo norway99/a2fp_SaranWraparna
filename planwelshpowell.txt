@@ -30,3 +30,5 @@ that of the argument (this is the reverse of what's usually done for compareTo,
 since we want descending order), and 1 if the Node's degree is less than that
 of the argument. Thus is we make Nodes comparable, we can use a PriorityQueue
 instead of an ArrayList for the Welsh-Powell algorithm.
+
+

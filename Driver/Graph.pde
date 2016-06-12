@@ -1,3 +1,4 @@
+import java.util.*;
 class Graph {
   ArrayList<Node> _nodes;
   int[][] _colors = 
@@ -46,5 +47,28 @@ class Graph {
         return false;
     return true;
    } 
+   
+   void welshpowell() {
+     int currColor = 0;
+     PriorityQueue<Node> bydegree = new PriorityQueue<Node>();
+     for (Node a: _nodes) {
+       bydegree.add(a);
+     }
+     int ctr = _nodes.size();
+     Node[] sorted = new Node[ctr];
+     sorted = bydegree.toArray(sorted);
+     while (ctr > 0) {
+       for (Node i : sorted) {
+         if (i._colored) {
+           continue;
+         }
+         if (isSafe(i,_colors[currColor])) {
+           i.setColor(_colors[currColor]);
+           ctr--;
+         }
+       }
+       currColor++;
+     }
+   }
 
 }
