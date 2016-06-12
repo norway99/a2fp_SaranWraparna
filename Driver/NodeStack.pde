@@ -1,4 +1,4 @@
-class NodeStack{
+class NodeStack {
   
   ArrayList<Node> _arr;
   
