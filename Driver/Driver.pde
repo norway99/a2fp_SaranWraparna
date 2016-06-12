@@ -37,8 +37,8 @@ void draw(){
   }
   if (mode == EMODE)
     text("mode is emode", 100, 100); // text for debug purposes
-  //if (mode == NMODE)
-    //text("mode is nmode", 200, 100); // text for debug purposes
+  if (mode == NMODE)
+    text("mode is nmode", 200, 100); // text for debug purposes
   if (graphComplete){
     //me.solve();
     text("graphy graph", 300, 100); // text for debug purposes
@@ -71,8 +71,10 @@ boolean switchMode(){
 
 void mousePressed(){
   if (clickable){
-    if (graphComplete())
-      solve();
+    if (graphComplete()){
+      me.solve();
+      clickable = false;
+    }
     if (switchMode()){
       if (mode == NMODE)
         mode = EMODE;
@@ -97,37 +99,4 @@ void createEdge(){
     me.addEdge(one, two);
     numClicks = 0;
   }
-}
-
-boolean isSafe(Node a, int[] c) {
-  for(Node i: a._neighbors) {
-    if (i.sameColor(c)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-boolean mcolor(Node curr) {
-    if (me.isSolved()) {
-      return true;
-    }
-    for (int[] c: me._colors) {
-      if (isSafe(curr,c)) {
-        curr.setColor(c);
-        for(Node next: curr._neighbors) {
-          if (mcolor(next)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-}
-
-boolean solve() {
-  print("hi");
-  //print(me._nodes.get(0).strNode());
-  mcolor(me._nodes.get(0));
-  return true;
 }

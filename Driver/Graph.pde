@@ -36,10 +36,34 @@ class Graph {
     }
     return true;
   }
-   
-
   
-  //void solve(int numColors) { //don't know if this should be void
-  //}
+  boolean mcolor(Node curr) {
+    if (isSolved()) {
+      return true;
+    }
+    for (int[] c: _colors) {
+      if (isSafe(curr,c)) {
+        curr.setColor(c);
+        for(Node next: curr._neighbors)
+          if (mcolor(next)) 
+            return true;
+      }
+    }
+    return false;
+  }
+  
+  boolean solve() {
+    print("hi");
+    //print(me._nodes.get(0).strNode());
+    mcolor(me._nodes.get(0));
+    return true;
+  }
+  
+  boolean isSafe(Node a, int[] c) {
+    for(Node i: a._neighbors)
+      if (i.sameColor(c))
+        return false;
+   return true;
+  }
 
 }
