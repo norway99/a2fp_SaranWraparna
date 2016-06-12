@@ -23,3 +23,10 @@ And so on and so forth, until ArrayList is empty (i.e. all nodes are colored).
 The nice thing about this algorithm is that by starting with the vertices with
 the highest degrees, we can take care of the vertices with the highest number
 of conflicts as early as possible :)
+
+EDIT: I think we can add a compareTo(Node other) method to Node.pde that returns
+0 if the two Nodes have the same degree, -1 if the Node's degree is greater than
+that of the argument (this is the reverse of what's usually done for compareTo,
+since we want descending order), and 1 if the Node's degree is less than that
+of the argument. Thus is we make Nodes comparable, we can use a PriorityQueue
+instead of an ArrayList for the Welsh-Powell algorithm.
