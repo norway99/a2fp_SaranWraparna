@@ -56,7 +56,12 @@ class Graph {
      }
      int ctr = _nodes.size();
      Node[] sorted = new Node[ctr];
-     sorted = bydegree.toArray(sorted);
+     for (int i=0; i<ctr; i++) {
+       sorted[i] = bydegree.poll();
+     }
+     for (Node a: sorted) {
+       print(a._neighbors.size());
+     }
      while (ctr > 0) {
        for (Node i : sorted) {
          if (i._colored) {
@@ -70,5 +75,4 @@ class Graph {
        currColor++;
      }
    }
-
 }
