@@ -1,7 +1,7 @@
 class Node{
   boolean _colored;
   int[] _color;
-  final int [] defaultcol = {100, 100, 100};
+  final int [] defaultcol = {127, 127, 127};
   int _x, _y;
   ArrayList<Node> _neighbors;
   
