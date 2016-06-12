@@ -61,10 +61,10 @@ void draw(){
     text("Drawing edges", 100, 100);
     fill(127);
     text("Please enter the desired number of colors", 300, 100);
-    //if (bt)
-      //backSolve();
-    //else
-      //welshPowellSolve();
+    if (bt)
+      backSolve();
+    else
+      welshPowellSolve();
     gc = false;
     clickable = false;
   }
@@ -110,7 +110,7 @@ void mousePressed(){
   }    
 }
 
-void keyPressed(){
+/*void keyPressed(){
   //String num = "number: ";
   if (gc && keyAnalyzer(key))
     //num += key;
@@ -120,7 +120,7 @@ void keyPressed(){
 
 boolean keyAnalyzer(char c){
   return c == '3';
-}
+}*/
    
 
 Node findNode(){
