@@ -8,7 +8,7 @@ int b2X;
 int mode, numClicks;
 boolean addNode, clickable;
 boolean bt, gc, gr;
-int numCols = 3;
+int numCols = 0;
 Stack<Node> ns;
 Graph me;
 
@@ -16,9 +16,8 @@ void setup(){
   size(600, 600);
   background(0);
   bX = bY = 20;
-  b1X = 20;
   b1Y = 100;
-  b2X = 250;
+  b1X = 250;
   bwidth = 30;
   bheight = 15;  
   mode = NMODE;
@@ -35,10 +34,10 @@ void draw(){
   fill(127);
   rect(bX, bY, bwidth, bheight);
   text("Switch Mode", bX + 1, bY - 5);
+  rect(bX, b1Y, bwidth, bheight);
+  text("Backtracking Solution", bX + 1, b1Y - 5);
   rect(b1X, b1Y, bwidth, bheight);
-  text("Backtracking Solution", b1X + 1, b1Y - 5);
-  rect(b2X, b1Y, bwidth, bheight);
-  text("Welsh-Powell Solution", b2X + 1, b1Y - 5);
+  text("Welsh-Powell Solution", b1X + 1, b1Y - 5);
   if (me._nodes.size() > 0)
     for (Node i : me._nodes)
       i.draw();
@@ -60,19 +59,16 @@ void draw(){
   }    
   createEdge();
   if (gr && gc){
+    clickable = false;
     fill(0);
     text("Drawing edges", 100, 100);
     fill(127);
-    text("Please enter the desired number of colors", 400, 100);
+    text("Please enter the desired number of colors", bX, 200);
     if (bt)
       backSolve();
     else
       welshPowellSolve();
-    gc = false;
-    clickable = false;
   }
-  //if (solve())
-    //text("Solved!", 500, 500);
 }
 
 boolean switchMode(){
@@ -81,12 +77,12 @@ boolean switchMode(){
 }  
 
 boolean backTrace(){
-  return mouseX >= b1X && mouseX <= b1X + bwidth &&
+  return mouseX >= bX && mouseX <= bX + bwidth &&
          mouseY >= b1Y && mouseY <= b1Y + bheight;
 }
 
 boolean welshPowell(){
-  return mouseX >= b2X && mouseX <= b2X + bwidth &&
+  return mouseX >= b1X && mouseX <= b1X + bwidth &&
          mouseY >= b1Y && mouseY <= b1Y + bheight;
 }
 
@@ -113,22 +109,23 @@ void mousePressed(){
   }    
 }
 
-/*void keyPressed(){
-  //String num = "number: ";
-  if (gc && keyAnalyzer(key))
-    //num += key;
-  print ("hi");
-  //numCols = Integer.parseInt(num);                        
+void keyPressed(){
+  String num = "";
+  if (gc && keyAnalyzer(key)){
+    num += key;
+    numCols = Integer.parseInt(num);  
+    print("You entered: " + numCols + " \n");
+  }
 }
 
 boolean keyAnalyzer(char c){
-  return c == '3';
-}*/
+  return c >= '1' && c <= '9';
+}
    
 
 Node findNode(){
   for (Node n : me._nodes)
-    if (dist(mouseX, mouseY, n._x, n._y) < 10)
+    if (dist(mouseX, mouseY, n._x, n._y) < 15)
       return n;
   return null;
 }
@@ -147,14 +144,13 @@ void createEdge(){
 }
 
 void backSolve(){
-    if (numCols > me._nodes.size())
-      text("Try again", 400, 100);
-    else
-      me.mcolor(numCols, 0);
+  if (numCols != 0)
+    me.mcolor(numCols, 0);
 }
 
 void welshPowellSolve(){
-  me.welshpowell(numCols);
+  if (numCols != 0)
+    me.welshpowell(numCols);
 }
 
   

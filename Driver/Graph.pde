@@ -1,4 +1,5 @@
 class Graph {
+  
   ArrayList<Node> _nodes;
   int[][] _colors = 
   { 
@@ -11,10 +12,11 @@ class Graph {
     {127,0,255}, //violet
     {102,51,0},  //brown
     {0,102,102}, //teal
-  };
+  };  
   
   Graph(){
     _nodes = new ArrayList<Node>();
+    //_solved = false;
   }
   
   void addNode(int x, int y){
@@ -26,9 +28,16 @@ class Graph {
     a.addNeighbor(b);
     b.addNeighbor(a);
   }
+  
+  boolean isSafe(Node a, int[] c){
+    for(Node i: a._neighbors)
+      if (i.sameColor(c))
+        return false;
+    return true;
+  } 
     
   boolean mcolor(int m, int vnum){
-    if (vnum == _nodes.size()) 
+    if (vnum == _nodes.size())
       return true;
     Node curr = _nodes.get(vnum);
     for (int c = 0; c < m; ++c)
@@ -39,13 +48,6 @@ class Graph {
       }
     return false;
   }
-  
-  boolean isSafe(Node a, int[] c){
-    for(Node i: a._neighbors)
-      if (i.sameColor(c))
-        return false;
-    return true;
-   } 
    
   void welshpowell(int m) {
      for (Node a : _nodes)
@@ -68,5 +70,12 @@ class Graph {
      currColor++;
      }
   }  
+  
+  boolean allColored(){
+    for (Node a : _nodes)
+      if (!a._colored)
+        return false;
+    return true;
+  }
 
 }
