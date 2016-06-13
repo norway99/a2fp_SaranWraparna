@@ -1,5 +1,5 @@
 
-# Team SaranWraparna - Graph Vertex Coloring}
+# Team SaranWraparna - Graph Vertex Coloring
 
 Graph coloring is the act of assigning different colors to features, especially vertices on a graph; strategies to color these
 vertices so that no connected pair have the same color are of great mathematical interest. The four-color
