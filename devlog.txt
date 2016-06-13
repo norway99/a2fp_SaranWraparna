@@ -2,24 +2,34 @@ Team SaranWraparna -- Sarah Yoon, Aparna Nair Kanneganti
 APCS2 pd10
 Final Project -- Development Log
 
-~TEMPLATE~
 ================================================================================
-Date:
-Contributor:
-<progress>
+Date: 2016-06-12
+Contributor: SY/ANK
+* fix node rendering so that colors are updated on the screen (by adding a node draw() method)
+* fix all booleans so that text is printed on the screen at the correct time
+* implement and debug backtracking algorithm
+* implement and debug Welsh-Powell graph coloring algorithm, which uses a priority queue
+* remove NodeStack.pde class; instead importing Stack class from java.util
+* add button for Welsh-Powell so that user can choose which algorithm they'd like to use to color their graph
+* enable keyPress() so that user can input the number of colors for the graph when prompted
+* make stroke and fill uniform on the GUI
+* update README
+
+Unfortunately, there's no time to make undo/redo button, as we had originally hoped
 ================================================================================
 
 ================================================================================
 Date: 2016-06-10
 Contributor: SY/ANK
-* debug Driver.pde
+* debug Driver.pde and add/remove/fiddle with booleans like 'clickable'
+* move buttons around on the GUI
 ================================================================================
 
 ================================================================================
 Date: 2016-06-09
 Contributor: SY
 * change _colors array to literal 2D array of ordered triplets (10 colors)
-* change Node's _color attr to a 3-element array, change constructor and mutator
+* change Node's _color attribute to a 3-element array, change constructor and mutator
 accordingly
 * add sameColor(int[]) to Node.pde for easy comparison in isSafe(Node, int[])
 * add methods isSafe(Node, int[]), mcolor(Node), and wrapper solve() to Driver
