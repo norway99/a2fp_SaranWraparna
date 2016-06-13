@@ -1,4 +1,3 @@
-import java.util.*;
 class Graph {
   ArrayList<Node> _nodes;
   int[][] _colors = 
@@ -48,31 +47,26 @@ class Graph {
     return true;
    } 
    
-   void welshpowell() {
+  void welshpowell(int m) {
+     for (Node a : _nodes)
+       a._colored = false;
      int currColor = 0;
-     PriorityQueue<Node> bydegree = new PriorityQueue<Node>();
-     for (Node a: _nodes) {
-       bydegree.add(a);
-     }
+     PriorityQueue<Node> byDegree = new PriorityQueue<Node>();
+     for (Node a : _nodes)
+       byDegree.add(a);
      int ctr = _nodes.size();
      Node[] sorted = new Node[ctr];
-     for (int i=0; i<ctr; i++) {
-       sorted[i] = bydegree.poll();
-     }
-     // works up to here!
-  
-     //I think there's a runaway loop here...
-     while (ctr > 0) {
-       for (Node i : sorted) {
-         if (i._colored) {
+     for (int i = 0; i < ctr; i++) 
+       sorted[i] = byDegree.poll();
+     while (currColor < m) {
+       for (int i = 0; i < ctr; i++) {
+         if (sorted[i]._colored)
            continue;
-         }
-         if (isSafe(i,_colors[currColor])) {
-           i.setColor(_colors[currColor]);
-           ctr--;
-         }
+         if (isSafe(sorted[i], _colors[currColor]))
+           sorted[i].setColor(_colors[currColor]);  
        }
-       currColor++;
+     currColor++;
      }
-   }
+  }  
+
 }
