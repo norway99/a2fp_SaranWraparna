@@ -1,7 +1,5 @@
-<snippet>
-  <content><![CDATA[
 
-# ${1: Team SaranWraparna - Graph Vertex Coloring}
+# Team SaranWraparna - Graph Vertex Coloring}
 
 Graph coloring is the act of assigning different colors to features, especially vertices on a graph; strategies to color these
 vertices so that no connected pair have the same color are of great mathematical interest. The four-color
@@ -48,7 +46,3 @@ Aparna Nair-Kanneganti and Sarah Yoon
 Sources:
 https://www.math.upenn.edu/~wilf/website/Backtracking%20II.pdf
 http://www.maths.usyd.edu.au/MATH2069/r/graphlecs4pages.pdf
-
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
