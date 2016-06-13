@@ -46,3 +46,4 @@ Aparna Nair-Kanneganti and Sarah Yoon
 Sources:
 https://www.math.upenn.edu/~wilf/website/Backtracking%20II.pdf
 http://www.maths.usyd.edu.au/MATH2069/r/graphlecs4pages.pdf
+https://www.kleemans.ch/static/fourcolors/welsh-powell.pdf
