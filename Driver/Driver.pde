@@ -1,3 +1,5 @@
+import java.util.*;
+
 final int NMODE = 0;
 final int EMODE = 1;
 int bX, bY, bwidth, bheight;
