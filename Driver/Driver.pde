@@ -7,14 +7,15 @@ int mode, numClicks;
 boolean addNode, clickable;
 boolean bt, gc, gr;
 int numCols = 3;
-NodeStack ns;
+Stack<Node> ns;
 Graph me;
 
 void setup(){ 
   size(600, 600);
   background(0);
-  bX = bY = 10;
-  b1X = b1Y = 50;
+  bX = bY = 20;
+  b1X = 20;
+  b1Y = 100;
   b2X = 250;
   bwidth = 30;
   bheight = 15;  
@@ -24,18 +25,18 @@ void setup(){
   bt = false;
   addNode = false;
   clickable = true;
-  ns = new NodeStack();
+  ns = new Stack<Node>();
   me = new Graph();
 }
 
 void draw(){
   fill(127);
   rect(bX, bY, bwidth, bheight);
-  text("Switch Mode", bX + 1, bY + 1);
+  text("Switch Mode", bX + 1, bY - 5);
   rect(b1X, b1Y, bwidth, bheight);
-  text("Backtracking Solution", b1X + 1, b1Y + 1);
+  text("Backtracking Solution", b1X + 1, b1Y - 5);
   rect(b2X, b1Y, bwidth, bheight);
-  text("Welsh-Powell Solution", b2X + 1, b1Y + 1);
+  text("Welsh-Powell Solution", b2X + 1, b1Y - 5);
   if (me._nodes.size() > 0)
     for (Node i : me._nodes)
       i.draw();
@@ -45,22 +46,22 @@ void draw(){
   }
   if (mode == EMODE){
     fill(0);
-    text("Drawing nodes", 200, 100);
+    text("Drawing nodes", 100, bY - 5);
     fill(127);
-    text("Drawing edges", 100, 100); 
+    text("Drawing edges", 100, bY - 5); 
   }
   if (mode == NMODE){
     fill(0);
-    text("Drawing edges", 100, 100);
+    text("Drawing edges", 100, bY - 5);
     fill(127);
-    text("Drawing nodes", 200, 100);
+    text("Drawing nodes", 100, bY - 5);
   }    
   createEdge();
   if (gr && gc){
     fill(0);
     text("Drawing edges", 100, 100);
     fill(127);
-    text("Please enter the desired number of colors", 300, 100);
+    text("Please enter the desired number of colors", 400, 100);
     if (bt)
       backSolve();
     else
@@ -151,7 +152,7 @@ void backSolve(){
 }
 
 void welshPowellSolve(){
-  me.welshpowell(); // placeholder until wp algo is complete
+  me.welshpowell(numCols);
 }
 
   

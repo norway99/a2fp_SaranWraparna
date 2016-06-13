@@ -16,7 +16,7 @@ class Node implements Comparable<Node>{
   }
   
   void setColor(int[] c){
-    for (int i=0; i<3; i++)
+    for (int i = 0; i < 3; i++)
       _color[i] = c[i];
     _colored = true;
   }
@@ -41,7 +41,18 @@ class Node implements Comparable<Node>{
     return " ( " + _x + " , " + _y + " ) ";
   } 
   
-  int compareTo(Node other){
+  String strCol(){
+    if (_color[1] == 0)
+      return "red";
+    else if (_color[1] == 255)
+      return "yellow";
+    else if (_color[1] == 128)
+      return "orange";
+    else
+      return "not colored";
+  }    
+  
+  public int compareTo(Node other){
     if (other._neighbors.size() == _neighbors.size())
       return 0;
     else if (other._neighbors.size() < _neighbors.size()) 
